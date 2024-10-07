@@ -1,0 +1,49 @@
+# Ignore Python virtual environments
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files and local environment-specific settings
+*.log
+*.env
+*.DS_Store
+*.vscode/
+.vscode/*
+
+# Ignore large model files (Hugging Face, PyTorch, TensorFlow, etc.)
+*.pt
+*.bin
+*.ckpt
+*.h5
+
+# Ignore large dataset files (if applicable)
+data/
+datasets/
+*.csv
+*.json
+
+# Ignore cache files (e.g., from Hugging Face Transformers, datasets, etc.)
+cache/
+cached/
+*.cache
+__cache__/
+
+# Ignore model output files
+output/
+runs/
+*.tflite
+
+# Ignore generated config files and API keys
+config.json
+api_key.json
+
+# Ignore Docker/Container files (if using Docker)
+docker-compose.yml
+.Dockerfile
+*.db
