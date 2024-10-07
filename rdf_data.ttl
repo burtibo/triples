@@ -1,0 +1,59 @@
+@prefix ex: <http://example.org/> .
+@prefix exont: <http://example.org/ontology#> .
+@prefix person: <http://example.org/person/> .
+@prefix city: <http://example.org/city/> .
+@prefix animal: <http://example.org/animal/> .
+@prefix group: <http://example.org/group/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# 1. Simple Triple
+person:Alice foaf:name "Alice" .
+
+# 2. Triple with Literal Datatype
+person:Bob exont:age "30"^^xsd:integer .
+
+# 3. Triple with Language Tag
+city:Paris exont:name "Paris"@fr .
+
+# 4. Triple with Blank Node
+_:b0 rdf:type exont:Person ;
+     foaf:name "Charlie" .
+
+# 5. Triple with Multiple Predicates
+person:David
+    foaf:name "David" ;
+    exont:email "david@example.org" .
+
+# 6. Triple with RDF Collection (using rdf:Seq)
+person:Eve exont:knows _:knowsList .
+_:knowsList rdf:type rdf:Seq ;
+    rdf:_1 person:Alice ;
+    rdf:_2 person:Bob .
+
+# 7. Triple with Reification (standard reification)
+ex:statement1 rdf:type rdf:Statement ;
+    rdf:subject person:Frank ;
+    rdf:predicate exont:age ;
+    rdf:object "25" ;
+    exont:source "Survey2021" .
+
+# 8. Triple with RDF List (using rdf:List)
+group:Team exont:hasMembers _:membersList .
+_:membersList rdf:first person:Grace ;
+    rdf:rest _:rest1 .
+_:rest1 rdf:first person:Heidi ;
+    rdf:rest _:rest2 .
+_:rest2 rdf:first person:Ivan ;
+    rdf:rest rdf:nil .
+
+# 9. Triple with Namespaces and Prefixes
+person:Judy exont:hasPet animal:Dog .
+
+# 10. Triple with OWL Vocabulary (Class and Subclass)
+animal:Dog a owl:Class .
+animal:PetDog a owl:Class ;
+    rdfs:subClassOf animal:Dog .
